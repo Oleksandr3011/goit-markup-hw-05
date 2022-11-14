@@ -88,8 +88,7 @@ button {
     position: relative;
 }
 
-.active::after,
-.site-nav-link::after {
+.active::after {
     position: absolute;
     display: block;
     content: '';
@@ -98,7 +97,7 @@ button {
     border-radius: 2px;
     bottom: 0;
     background: var(--accent-color);
-    opacity: 0;
+    opacity: 1;
     transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -171,6 +170,17 @@ button {
     opacity: 1;
 }
 
+.current::after {
+    position: absolute;
+    bottom: -33px;
+    right: 0px;
+    content: "";
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+}
+
 .site-nav-link {
     color: var(--title-text-color);
 }
@@ -228,11 +238,12 @@ button {
 
 /* Hero */
 .hero {
-    background-color: rgba(47, 48, 58, 1);
+    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../imagnes/Imghero.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1600px 600px;
     padding-top: 200px;
     padding-bottom: 200px;
-    background-image: url(../imagnes/Imghero.jpg);
-    background-size: cover;
 }
 
 .hero-title {
@@ -284,6 +295,7 @@ button {
     z-index: 3;
     opacity: 1;
     transition: opacity var(--transition-timing-function) var(--transition-duration);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .is-hidden {
@@ -307,6 +319,7 @@ button {
     background: rgba(255, 255, 255, 1);
     border-radius: 4px;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-close {
@@ -414,7 +427,15 @@ button {
     text-transform: uppercase;
     color: var(--white-color);
     text-align: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.03em;
 }
+
 
 /* Our team */
 .section {
@@ -469,6 +490,7 @@ button {
     justify-content: center;
     gap: 10px;
     margin-top: 16px;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-items-link {
@@ -509,6 +531,7 @@ button {
     border: 1px solid #afb1b8;
     border-radius: 4px;
     gap: 30px;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-link:hover .client-logo,
@@ -625,6 +648,7 @@ button {
     height: 44px;
     border-radius: 50%;
     text-align: center;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-social-item:not(:last-child) {
@@ -638,58 +662,6 @@ button {
 .footer-social-link:hover,
 .footer-social-link:focus {
     background-color: var(--accent-color);
-}
-
-
-
-/* PORTFLIO PAGE */
-/* Work filter */
-.porffolio-filter {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
-}
-
-.prt-btn {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.63;
-    text-align: center;
-    letter-spacing: 0.03em;
-    background-color: var(--primary-text-color);
-    padding: 6px 22px;
-    color: var(--title-text-color);
-    background-color: #f5f4fa;
-    border-radius: 4px;
-    margin-right: 8px;
-}
-
-.prt-btn:hover,
-.prt-btn:focus {
-    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1),
-        0px 1px 2px rgba(0, 0, 0, 0.08),
-        0px 2px 2px rgba(0, 0, 0, 0.12);
-}
-
-.porffolio-filter li:last-child .prt-btn {
-    margin-right: 0;
-}
-
-.prt-btn:hover,
-.prt-btn:focus {
-    color: var(--white-color);
-    background-color: var(--accent-color);
-}
-
-.porffolio-filter .active-filter {
-    background-color: var(--accent-color);
-    color: var(--white-color);
-}
-
-/* Work-cards */
-.work-card {
-    display: flex;
-    flex-wrap: wrap;
 }
 
 
@@ -740,12 +712,6 @@ button {
     color: var(--white-color);
 }
 
-/* Work-cards */
-.work-card {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .work-card {
     display: flex;
     flex-wrap: wrap;
@@ -785,7 +751,7 @@ button {
 }
 
 .work-card-opacity {
-    display: block;
+    /* display: block; */
     position: absolute;
     top: 0;
     left: 0;
@@ -794,16 +760,15 @@ button {
     background: rgba(33, 150, 243, 0.9);
     padding: 63px 23px;
     opacity: 0;
-    transition-property: transform, opacity;
-    transition-duration: var(--transition-duration);
-    transition-timing-function: (--transition-timing-function);
+    /* transition-property: transform, opacity; */
     transform: translateY(100%);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .work-card-item:hover .work-card-opacity {
     opacity: 1;
     transform: translateY(0%);
-    transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .work-opacity-text {
